@@ -72,21 +72,42 @@ data.myProfile.posts.forEach((post) => {
     postListHtml.innerHTML += `<div class="post"> ${postHtml} </div>`
 }) 
 
-
+// BOTTONE CLICK
 var buttonClick = document.querySelector(".send");
-var user_input = document.getElementById("input-area").value;
+var user_input = document.getElementById("input-area")
+var date_today = new Date().toLocaleDateString()
 
-var new_post = {
-    text: user_input,
-    date: '05/07/2021'
-}
+buttonClick.addEventListener("click", () => {
+    let user_text = user_input.value
+    data.myProfile.posts.push(
+        { 
+        text: user_text,
+        date: date_today,
+    },
+)
+    user_text += '';
 
-//Creare una funzione addeventlistener che permetta di pushare un testo quando il bottone viene cliccato
-buttonClick.addEventListener("click", function(){
-    data.myProfile.posts.push(new_post);
-});
+    let user_post = `
+    <div class="post-details"> 
+        <div class="user-pic">
+            <img src="${data.myProfile.details.pic}" alt="user pic">
+        </div>
+        
+        <div class="details">
 
+            <div class="user-name">
+            ${data.myProfile.details.name} ${data.myProfile.details.surname}
+            </div>
 
+            <div class="post-date">
+            ${date_today}
+            </div>
 
-
-//Con un click su “CREA” viene pushato un nuovo post nell’array posts, con il testo della textarea.
+        </div>
+    </div> 
+    <div class="post-text">
+        ${user_text}
+    </div>
+    `
+    postListHtml.innerHTML += `<div class="post"> ${user_post} </div>`
+})
