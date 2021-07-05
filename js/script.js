@@ -29,6 +29,7 @@ const data = {
 
 var userDetailHtml = document.querySelector(".user-details")
 
+
 userDetailHtml.innerHTML = `
     <div class="user-pic"><img src="${data.myProfile.details.pic}" alt="user pic"></div>
     <div class="user-name">${data.myProfile.details.name} ${data.myProfile.details.surname} </div>
@@ -70,3 +71,22 @@ data.myProfile.posts.forEach((post) => {
 
     postListHtml.innerHTML += `<div class="post"> ${postHtml} </div>`
 }) 
+
+
+var buttonClick = document.querySelector(".send");
+var user_input = document.getElementById("input-area").value;
+
+var new_post = {
+    text: user_input,
+    date: '05/07/2021'
+}
+
+//Creare una funzione addeventlistener che permetta di pushare un testo quando il bottone viene cliccato
+buttonClick.addEventListener("click", function(){
+    data.myProfile.posts.push(new_post);
+});
+
+
+
+
+//Con un click su “CREA” viene pushato un nuovo post nell’array posts, con il testo della textarea.
