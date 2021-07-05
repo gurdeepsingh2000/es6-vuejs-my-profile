@@ -11,7 +11,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/style.css">
-
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
@@ -24,8 +23,8 @@
         </div>
 
         <div class="new-post">
-            <textarea placeholder="A cosa stai pensando?"></textarea>
-            <button class="send">CREA</button>
+            <textarea @keyup.enter="pushPost" v-model = "add_post" placeholder="A cosa stai pensando?"></textarea>
+            <button @click = "pushPost" class="send">CREA</button>
         </div>
 
         <div class="post-list">

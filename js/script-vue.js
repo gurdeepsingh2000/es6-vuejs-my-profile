@@ -3,8 +3,8 @@ Vue.config.devtools = true;
 new Vue(
     {
         el: '#profile-page',
-        data: {
-            myProfile: {
+    data: {
+                myProfile: {
                 details: {
                     name: 'Pierfilippo',
                     surname: 'Baudo',
@@ -27,9 +27,20 @@ new Vue(
                         text: 'Vi presento il mio amico Mimmo',
                         mediaPath: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Supernerd_%283262512306%29.jpg/1024px-Supernerd_%283262512306%29.jpg',
                         date: '17-06-2021'
-                    }
-                ]
-            }
+                    },
+                ],
+            },
+            add_post: ""
         },
+                methods: {
+                    pushPost: function() {
+                        this.myProfile.posts.push(
+                            {
+                                text: this.add_post,
+                                date: new Date().toLocaleDateString()
+                            });
+                            this.add_post = ""
+                }
+            }
     }
 );
